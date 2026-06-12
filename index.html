@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chloe Knott -Product &amp; Software Portfolio</title>
+  <meta name="description" content="Chloe Knott -Software Engineering student at SJSU, building AI products and consumer experiences." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FAFAF8;
+      --surface: #FFFFFF;
+      --text: #1a1a1a;
+      --text-secondary: #555;
+      --accent: #2E86AB;
+      --accent-soft: #E8F4F8;
+      --border: #E8E8E4;
+      --tag-bg: #F3F3EF;
+      --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-hover: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+    /* Header */
+    header {
+      padding: 60px 0 40px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 48px;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    header p {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      line-height: 1.7;
+    }
+
+    .header-links {
+      margin-top: 20px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .header-links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+
+    .header-links a:hover { opacity: 0.7; }
+
+    /* Section headers */
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+
+    /* Project cards */
+    .projects { margin-bottom: 60px; }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 32px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow);
+      transition: box-shadow 0.2s, transform 0.15s;
+    }
+
+    .project-card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-1px);
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 10px;
+    }
+
+    .project-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .project-meta {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      padding-top: 4px;
+    }
+
+    .project-subtitle {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .project-desc {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 14px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      background: var(--tag-bg);
+      color: var(--text-secondary);
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+
+    .tag.highlight {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .project-links {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 16px;
+    }
+
+    .project-links a {
+      font-size: 0.8rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .project-links a:hover { text-decoration: underline; }
+
+    /* Skills section */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 60px;
+    }
+
+    .skill-group h3 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .skill-group p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0 48px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    footer a { color: var(--accent); text-decoration: none; }
+
+    /* Featured badge */
+    .featured {
+      display: inline-block;
+      background: #FFF3E0;
+      color: #E65100;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 100px;
+      margin-left: 10px;
+      vertical-align: middle;
+      letter-spacing: 0.03em;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      header { padding: 40px 0 28px; }
+      header h1 { font-size: 1.8rem; }
+      .project-card { padding: 20px; }
+      .project-header { flex-direction: column; gap: 4px; }
+      .project-title { font-size: 1.15rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>Chloe Knott</h1>
+      <p>Software Engineering student at San Jose State (Dec 2026). I build AI products and consumer experiences -from idea to shipped code. Currently looking for PM and TPM roles.</p>
+      <div class="header-links">
+        <a href="https://linkedin.com/in/chloeknott" target="_blank">LinkedIn</a>
+        <a href="mailto:chloeknott@gmail.com">chloeknott@gmail.com</a>
+      </div>
+    </header>
+
+    <!-- Featured Projects -->
+    <div class="section-label">Featured Projects</div>
+    <div class="projects">
+
+      <!-- OfflineLLM -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">OfflineLLM / AI Penpal <span class="featured">AI</span></div>
+          <div class="project-meta">Spring 2026</div>
+        </div>
+        <div class="project-subtitle">Senior Design Project &middot; Team of 4</div>
+        <div class="project-desc">
+          An email-based AI assistant for users without internet access. People send questions via email, a locally-hosted LLM (Ollama) generates responses, and the system replies automatically. Maintains per-user conversation history, supports delay-tolerant networking, and runs at offlinellm.me.
+        </div>
+        <div class="project-tags">
+          <span class="tag highlight">AI / LLM</span>
+          <span class="tag highlight">Human-AI Interaction</span>
+          <span class="tag">Python</span>
+          <span class="tag">Flask</span>
+          <span class="tag">Docker</span>
+          <span class="tag">SQLite</span>
+          <span class="tag">29 Tests</span>
+          <span class="tag">CI/CD</span>
+        </div>
+      </div>
+
+      <!-- SpartanAdvisor -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">SpartanAdvisor <span class="featured">AI</span></div>
+          <div class="project-meta">Fall 2025</div>
+        </div>
+        <div class="project-subtitle">Academic Planning Platform &middot; Team of 4</div>
+        <div class="project-desc">
+          A full-stack academic advising platform for SJSU students. Features an AI chatbot powered by GPT-3.5/4, automatic transcript parsing via GPT-4 Vision, drag-and-drop course planning with conflict detection, and role-based access for students, advisors, and admins.
+        </div>
+        <div class="project-tags">
+          <span class="tag highlight">AI / GPT-4</span>
+          <span class="tag highlight">Consumer App</span>
+          <span class="tag">React</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Supabase</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">PDF.js</span>
+        </div>
+      </div>
+
+      <!-- LikeHome -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">LikeHome</div>
+          <div class="project-meta">Spring 2026</div>
+        </div>
+        <div class="project-subtitle">Hotel Booking Platform &middot; Team of 12</div>
+        <div class="project-desc">
+          A full-stack hotel booking platform with search, reservations, rewards, and authentication. I owned the testing framework -authored 120+ automated tests across frontend (Vitest) and backend (Jest), set up coverage reporting, and managed sprint deliverables.
+        </div>
+        <div class="project-tags">
+          <span class="tag highlight">PM / QA Lead</span>
+          <span class="tag">React</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Express 5</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">120+ Tests</span>
+          <span class="tag">Netlify</span>
+        </div>
+      </div>
+
+      <!-- Neko App -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Neko App</div>
+          <div class="project-meta">May 2026</div>
+        </div>
+        <div class="project-subtitle">Personal Life Dashboard &middot; Solo Project</div>
+        <div class="project-desc">
+          A desktop dashboard I designed and built from scratch to manage my daily life. 10 modules covering tasks, calendar, calorie tracking, fitness planning, groceries, health, home, pets, and travel. Custom pink/lavender design system with SQLite persistence.
+        </div>
+        <div class="project-tags">
+          <span class="tag highlight">Product Design</span>
+          <span class="tag highlight">Solo Build</span>
+          <span class="tag">Python</span>
+          <span class="tag">CustomTkinter</span>
+          <span class="tag">SQLite</span>
+          <span class="tag">1,450+ Lines</span>
+        </div>
+      </div>
+
+      <!-- Karate Website -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Hermanus Dojo Website</div>
+          <div class="project-meta">Apr 2026</div>
+        </div>
+        <div class="project-subtitle">Production Website &middot; Solo &middot; Live</div>
+        <div class="project-desc">
+          Built and deployed a responsive website for a karate school in South Africa. Contact form powered by a Cloudflare Worker serverless backend. SEO-optimized with structured data. Went from zero to live in 2 days.
+        </div>
+        <div class="project-tags">
+          <span class="tag highlight">Shipped</span>
+          <span class="tag">HTML/CSS/JS</span>
+          <span class="tag">Cloudflare Pages</span>
+          <span class="tag">Cloudflare Workers</span>
+          <span class="tag">SEO</span>
+        </div>
+      </div>
+
+      <!-- Packet Sniffer -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Network Security Toolkit</div>
+          <div class="project-meta">Spring 2026</div>
+        </div>
+        <div class="project-subtitle">Packet Sniffer &amp; IDS &middot; Team of 5</div>
+        <div class="project-desc">
+          A suite of 7+ Python network security tools: packet sniffer, SYN flood detector, port scanner, rule-based IDS, and metrics visualization for comparing before/after IPsec VPN deployment.
+        </div>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Scapy</span>
+          <span class="tag">Network Security</span>
+          <span class="tag">Matplotlib</span>
+        </div>
+      </div>
+
+      <!-- FitPass -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">FitPass</div>
+          <div class="project-meta">Summer 2025</div>
+        </div>
+        <div class="project-subtitle">Fitness Booking System &middot; Team of 3</div>
+        <div class="project-desc">
+          A ClassPass-style fitness booking platform. I owned the database layer -designed 15+ tables with ER diagrams, wrote schema scripts, indexes, and query performance analysis. Full-stack with React frontend and Spring Boot API.
+        </div>
+        <div class="project-tags">
+          <span class="tag">Java</span>
+          <span class="tag">Spring Boot</span>
+          <span class="tag">React</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">Tailwind CSS</span>
+        </div>
+      </div>
+
+      <!-- Nutritionist Booking -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Nutritionist Booking System</div>
+          <div class="project-meta">May 2026</div>
+        </div>
+        <div class="project-subtitle">Appointment Scheduler &middot; Solo Project</div>
+        <div class="project-desc">
+          A full-stack appointment booking system with provider browsing, timeslot selection, booking/cancellation/rescheduling, and optimistic locking to prevent double-booking race conditions.
+        </div>
+        <div class="project-tags">
+          <span class="tag">Java 17</span>
+          <span class="tag">Spring Boot</span>
+          <span class="tag">Thymeleaf</span>
+          <span class="tag">JPA/Hibernate</span>
+          <span class="tag">H2</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Skills -->
+    <div class="section-label">Skills</div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h3>Languages</h3>
+        <p>Python, Java, TypeScript, JavaScript, C, SQL, HTML/CSS</p>
+      </div>
+      <div class="skill-group">
+        <h3>Frameworks</h3>
+        <p>React, Flask, Spring Boot, Express, Vite, Tailwind, CustomTkinter</p>
+      </div>
+      <div class="skill-group">
+        <h3>AI / ML</h3>
+        <p>Ollama, OpenAI API, GPT-4 Vision, sentence-transformers, Pydantic</p>
+      </div>
+      <div class="skill-group">
+        <h3>Tools &amp; Infra</h3>
+        <p>Docker, Git, PostgreSQL, MySQL, SQLite, Supabase, Cloudflare, GitHub Actions</p>
+      </div>
+      <div class="skill-group">
+        <h3>Product</h3>
+        <p>User research, sprint planning, test strategy, roadmapping, Agile/Scrum</p>
+      </div>
+      <div class="skill-group">
+        <h3>Testing</h3>
+        <p>pytest, Jest, Vitest, Selenium, semantic similarity scoring</p>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="section-label">Education</div>
+    <div class="project-card" style="margin-bottom: 60px;">
+      <div class="project-header">
+        <div class="project-title">San Jose State University</div>
+        <div class="project-meta">Expected Dec 2026</div>
+      </div>
+      <div class="project-desc">
+        B.S. Software Engineering<br>
+        Relevant coursework: Computer Networks, Object-Oriented Design, Software Engineering, Database Management Systems, Data Structures &amp; Algorithms, Operating Systems, Software Quality Engineering
+      </div>
+    </div>
+
+    <footer>
+      Chloe Knott &middot; <a href="mailto:chloeknott@gmail.com">chloeknott@gmail.com</a>
+    </footer>
+  </div>
+
+</body>
+</html>
